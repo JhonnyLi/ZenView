@@ -31,8 +31,8 @@ namespace ZenView
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Css/Vendor/Bootstrap/bootstrap.css",
+                      "~/Css/site.css"));
         }
     }
 }

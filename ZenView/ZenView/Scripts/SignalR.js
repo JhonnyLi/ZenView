@@ -22,7 +22,7 @@ Main.SignalR = (function () {
         userId = user.id;
         console.log(user.id);
         connection.server.connected(user.id, "Torgny");
-        //connection.server.send("Torgny", "Här e ja");
+        connection.server.send("Torgny", "Här e ja");
         //connection.server.sendToUser("maga-dog", "Ett meddelande");
         button.addClass("btn btn-success");
         //button.text("Connected");
