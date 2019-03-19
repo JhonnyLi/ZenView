@@ -259,3 +259,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/ZenView/ZenView/Scripts/react.js
+/ZenView/ZenView/Scripts/react.min.js
+/ZenView/ZenView/Css/bundle.css
+/ZenView/ZenView/Css/bundle.min.css
