@@ -1,0 +1,17 @@
+﻿//Vendor styles
+@import "Vendor/Bootstrap/bootstrap.css";
+
+//Settings
+@import "Settings/colors.scss";
+
+//Mixins and functions
+@import "Tools/mixins.scss";
+
+//Layout
+@import "layout.scss";
+
+//Generic element styles
+@import "Elements/elements.scss";
+
+//Components
+@import "Components/components.scss";

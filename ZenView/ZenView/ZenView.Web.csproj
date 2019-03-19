@@ -196,6 +196,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\bundle.css">
+      <DependentUpon>bundle.scss</DependentUpon>
+    </Content>
+    <Content Include="Css\bundle.min.css">
+      <DependentUpon>bundle.css</DependentUpon>
+    </Content>
     <Content Include="Css\Vendor\Bootstrap\bootstrap-theme.css" />
     <Content Include="Css\Vendor\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="Css\Vendor\Bootstrap\bootstrap.css" />
@@ -203,7 +209,13 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Css\Site.css" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Css\Elements\elements.scss" />
+    <Content Include="Css\Components\components.scss" />
+    <None Include="Css\layout.scss" />
     <Content Include="Scripts\Vendor\Misc\bootstrap.js" />
     <Content Include="Scripts\Vendor\Misc\bootstrap.min.js" />
     <Content Include="Scripts\Main.js" />
@@ -216,6 +228,9 @@
     <Content Include="Css\Vendor\Bootstrap\bootstrap.css.map" />
     <Content Include="Css\Vendor\Bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Css\Vendor\Bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Css\bundle.scss" />
+    <Content Include="Css\Settings\colors.scss" />
+    <Content Include="Css\Tools\mixins.scss" />
     <None Include="Scripts\Vendor\jQuery\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Vendor\jQuery\jquery-3.3.1.js" />
     <Content Include="Scripts\Vendor\jQuery\jquery-3.3.1.min.js" />

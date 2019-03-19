@@ -1,0 +1,36 @@
+﻿@import url(Vendor/Bootstrap/bootstrap.css);
+body {
+  padding-top: 50px;
+  padding-bottom: 20px; }
+  body .body-content {
+    /*padding-left: 15px;
+        padding-right: 15px;*/ }
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px; }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+            will truncate terms that are too long to fit in the left column */
+.dl-horizontal dt {
+  white-space: normal; }
+
+h1 {
+  color: green; }
+
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translate(0, 0); }
+  100% {
+    -webkit-transform: translate(-100, 0); } }
+
+#alert-ticker {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden; }
+  #alert-ticker span {
+    display: inline-block;
+    padding-left: 50%;
+    -webkit-animation: scroll 5s infinite; }

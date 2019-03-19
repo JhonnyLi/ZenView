@@ -1,0 +1,11 @@
+﻿@mixin keyframe() {
+    @-webkit-keyframes scroll{
+        0% {
+            -webkit-transform: translate(0,0)
+        }
+
+        100% {
+            -webkit-transform: translate(-100,0)
+        }
+    }
+}

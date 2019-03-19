@@ -1,0 +1,14 @@
+﻿@include keyframe();
+
+#alert-ticker {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+
+    span {
+        display: inline-block;
+        padding-left: 50%;
+        -webkit-animation: scroll 5s infinite;
+    }
+}
+
