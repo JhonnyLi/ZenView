@@ -24,13 +24,17 @@ h1 {
   0% {
     -webkit-transform: translate(0, 0); }
   100% {
-    -webkit-transform: translate(-100, 0); } }
+    -webkit-transform: translate(-100%, 0); } }
 
 #alert-ticker {
   width: 100%;
   white-space: nowrap;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: black; }
   #alert-ticker span {
+    color: red;
     display: inline-block;
-    padding-left: 50%;
-    -webkit-animation: scroll 5s infinite; }
+    padding-left: 90%;
+    font-size: 1.5em;
+    font-weight: 900;
+    -webkit-animation: scroll 15s infinite linear; }

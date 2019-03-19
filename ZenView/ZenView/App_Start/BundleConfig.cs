@@ -25,13 +25,23 @@ namespace ZenView
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                 "~/Scripts/Vendor/SignalR/jquery.signalr*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/react").Include(
+#if DEBUG
+                "~/Scripts/Vendor/ReactJs/react.development.js",
+                "~/Scripts/Vendor/ReactJs/react-dom.development.js"
+#else
+                "~/Scripts/Vendor/ReactJs/react.production.min.js",
+                "~/Scripts/Vendor/ReactJs/react-dom.production.min.js"
+#endif
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/sitescripts").Include(
-                "~/Scripts/Main.js"
+                "~/Scripts/Main.js",
+                "~/Scripts/react.js"
                 //"~/Scripts/SignalR.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //"~/Css/Vendor/Bootstrap/bootstrap.css",
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Css/bundle.css"));
         }
     }

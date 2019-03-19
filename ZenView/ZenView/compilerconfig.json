@@ -2,5 +2,9 @@
   {
     "outputFile": "Css/bundle.css",
     "inputFile": "Css/bundle.scss"
+  },
+  {
+    "outputFile": "Scripts/react.js",
+    "inputFile": "Scripts/react.jsx"
   }
 ]

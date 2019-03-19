@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -41,6 +41,7 @@
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/react")
     <script src="~/Scripts/Vendor/SignalR/jquery.signalR-2.4.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     @Scripts.Render("~/bundles/sitescripts")
