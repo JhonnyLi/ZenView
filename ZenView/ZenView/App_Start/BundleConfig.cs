@@ -28,10 +28,14 @@ namespace ZenView
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
 #if DEBUG
                 "~/Scripts/Vendor/ReactJs/react.development.js",
-                "~/Scripts/Vendor/ReactJs/react-dom.development.js"
+                "~/Scripts/Vendor/ReactJs/react-dom.development.js",
+                "~/Scripts/Vendor/Redux/redux.js",
+                "~/Scripts/Vendor/Redux/react-redux.js"
 #else
                 "~/Scripts/Vendor/ReactJs/react.production.min.js",
                 "~/Scripts/Vendor/ReactJs/react-dom.production.min.js"
+                "~/Scripts/Vendor/Redux/redux.min.js",
+                "~/Scripts/Vendor/Redux/react-redux.min.js"
 #endif
                 ));
 

@@ -1,16 +1,39 @@
-﻿console.log("React initialized");
+﻿
+function counter(state = 0, action) {
+    switch (action.type) {
+        case 'INCREMENT':
+            return state + 1
+        case 'DECREMENT':
+            return state - 1
+        default:
+            return state
+    }
+}
 
-let funcProxy = new Proxy(signalRInit, function () {
-    console.log("Inside proxy");
-});
+let store = window.Redux.createStore(counter);
+
+//store.subscribe(() => console.log(store.getState()));
+store.subscribe(()=>render())
+//store.dispatch({ type: 'INCREMENT' });
 
 
+console.log("React initialized");
+
+//let funcProxy = new Proxy(signalRInit, function () {
+//    console.log("Inside proxy");
+//});
+
+var test = function () {
+    store.dispatch({ type: 'INCREMENT' });
+}
+
+$("#signalRbtn").click(test);
 
 class AlertTicker extends React.Component {
     render() {
         return (
             <div id="alert-ticker">
-                <span> 22:51 mto.se - https://www.mto.se/ Your site went down!</span>
+                <span> 22:51 mto.se - https://www.mto.se/ Your site went down! {this.props.ticker}</span>
             </div>
         );
     }
@@ -27,25 +50,22 @@ class CommentBox extends React.Component {
 class MainContainer extends React.Component {
     render() {
         var rows = [];
-        for (var i = 0; i < numrows; i++) {
+        //for (var i = 0; i < 10; i++) {
             // note: we add a key prop here to allow react to uniquely identify each
             // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-            rows.push(<CommentBox key={i} />);
-        }
+           // rows.push(<CommentBox key={i} />);
+        //}
         return (
             <div>
-                <AlertTicker />
-                <div>
-                    {rows}
-                </div>
+                <AlertTicker ticker={this.props.store} />
             </div>
         );
     }
 }
 
 
-function tick() {
-    ReactDOM.render(<MainContainer />, document.getElementById('content'));
+function render() {
+    ReactDOM.render(<MainContainer store={store.getState()} />, document.getElementById('content'));
 }
 
-setInterval(tick, 1000);
+setInterval(render, 1000);

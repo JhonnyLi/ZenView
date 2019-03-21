@@ -246,6 +246,7 @@
     <Content Include="Scripts\react.min.js">
       <DependentUpon>react.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\redux.jsx" />
     <Content Include="Scripts\Vendor\Misc\bootstrap.js" />
     <Content Include="Scripts\Vendor\Misc\bootstrap.min.js" />
     <Content Include="Scripts\Main.js" />
@@ -276,6 +277,10 @@
     <Content Include="Scripts\Vendor\ReactJs\react-dom.production.min.js" />
     <Content Include="Scripts\Vendor\ReactJs\react.development.js" />
     <Content Include="Scripts\Vendor\ReactJs\react.production.min.js" />
+    <Content Include="Scripts\Vendor\Redux\react-redux.js" />
+    <Content Include="Scripts\Vendor\Redux\react-redux.min.js" />
+    <Content Include="Scripts\Vendor\Redux\redux.js" />
+    <Content Include="Scripts\Vendor\Redux\redux.min.js" />
     <Content Include="Scripts\Vendor\SignalR\jquery.signalR-2.4.0.js" />
     <Content Include="Scripts\Vendor\SignalR\jquery.signalR-2.4.0.min.js" />
     <Content Include="Web.config">
