@@ -33,7 +33,7 @@ namespace ZenView
                 "~/Scripts/Vendor/Redux/react-redux.js"
 #else
                 "~/Scripts/Vendor/ReactJs/react.production.min.js",
-                "~/Scripts/Vendor/ReactJs/react-dom.production.min.js"
+                "~/Scripts/Vendor/ReactJs/react-dom.production.min.js",
                 "~/Scripts/Vendor/Redux/redux.min.js",
                 "~/Scripts/Vendor/Redux/react-redux.min.js"
 #endif

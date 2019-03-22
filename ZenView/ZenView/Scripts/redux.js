@@ -41,3 +41,5 @@ $(function () {
     Main.Redux.Init();
 });
 
+$("#signalRbtn").click(Main.Redux.Increment);
+
