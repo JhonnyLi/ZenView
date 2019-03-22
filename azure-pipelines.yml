@@ -33,6 +33,13 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: CopyFiles@2
+  displayName: 'Copy ARM templates'
+  inputs:
+      SourceFolder: ZenView
+      Contents: '*.json'
+      TargetFolder: $(build.artifactstagingdirectory)/Templates
+
 - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
 - task: PublishBuildArtifacts@1
