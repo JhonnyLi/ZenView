@@ -246,7 +246,13 @@
     <Content Include="Scripts\react.min.js">
       <DependentUpon>react.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\redux.js">
+      <DependentUpon>redux.jsx</DependentUpon>
+    </Content>
     <Content Include="Scripts\redux.jsx" />
+    <Content Include="Scripts\redux.min.js">
+      <DependentUpon>redux.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Vendor\Misc\bootstrap.js" />
     <Content Include="Scripts\Vendor\Misc\bootstrap.min.js" />
     <Content Include="Scripts\Main.js" />
