@@ -38,7 +38,7 @@ steps:
   inputs:
       SourceFolder: ZenView
       Contents: '*.json'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      TargetFolder: $(Build.ArtifactStagingDirectory)
 
 - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
