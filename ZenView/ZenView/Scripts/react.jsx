@@ -11,7 +11,7 @@
 class CommentBox extends React.Component {
     render() {
         return (
-            <div className="commentBox">Hello, world! {new Date().toLocaleTimeString()}.</div>
+            <div className="commentBox">{new Date().toLocaleTimeString()}.</div>
         );
     }
 }

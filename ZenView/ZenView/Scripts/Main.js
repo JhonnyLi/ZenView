@@ -2,7 +2,7 @@
     let init = function () {
         console.log("Main Initialized");
     };
-
+    
     return {
         Init: init
     };
