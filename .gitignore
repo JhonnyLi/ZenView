@@ -263,3 +263,4 @@ __pycache__/
 /ZenView/ZenView/Scripts/react.min.js
 /ZenView/ZenView/Css/bundle.css
 /ZenView/ZenView/Css/bundle.min.css
+/ZenView/Secrets/AppSecrets.config
