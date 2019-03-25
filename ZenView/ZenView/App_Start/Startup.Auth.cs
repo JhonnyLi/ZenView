@@ -61,8 +61,8 @@ namespace ZenView
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = ConfigurationManager.AppSettings["GoogClientID"],
-                ClientSecret = ConfigurationManager.AppSettings["GoogClientSecret"]
+                ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
         }
     }
