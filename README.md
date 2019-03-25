@@ -1,5 +1,6 @@
 # ZenView
 [![Build Status](https://dev.azure.com/ZenView-Project/ZenView/_apis/build/status/zenview%20-%201%20-%20CI?branchName=master)](https://dev.azure.com/ZenView-Project/ZenView/_build/latest?definitionId=4&branchName=master)
+[![Online Status](https://img.shields.io/uptimerobot/status/m782223478-9de41719053f0594e051a4b9.svg?label=Online%20status)](https://img.shields.io/uptimerobot/status/m782223478-9de41719053f0594e051a4b9.svg?label=Online%20status)
 
 ## The idea
 The server connects to Zendesk via Api and also through webhooks that update tickets status in real-time.
