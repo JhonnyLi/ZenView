@@ -62,7 +62,8 @@ namespace ZenView
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"],
+                CallbackPath = new PathString("/Account/ExternalLoginCallback")
             });
         }
     }
