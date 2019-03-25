@@ -1,6 +1,20 @@
 ﻿Main.Redux = (() => {
-    let reducer = (state = 0, action) => {
-        if (action === undefined) return state;
+    let reducer = (state, action) => {
+        debugger;
+        if (state === undefined) {
+            $.getJSON('https://zenview.zendesk.com/api/v2/search.json?query=type:ticket status:open').done(function (data) {
+                console.log(data);
+            }).fail((err) => { console.log(err); });
+            //$.ajax({
+            //    url: 'https://zenview.zendesk.com/api/v2/search.json?query=type:ticket status:open',
+            //    contentType: 'application/json',
+            //    type: 'GET'
+            //}).done(function (data) {
+            //    console.log(data.results);
+            //    state = data.results;
+            //});
+            return state;
+        }
         console.log("Reducers reduce");
         switch (action.type) {
             case 'INCREMENT':
