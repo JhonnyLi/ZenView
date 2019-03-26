@@ -63,7 +63,7 @@ namespace ZenView
             {
                 ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
                 ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"],
-                CallbackPath = new PathString("/Account/ExternalLoginCallback")
+                CallbackPath = new PathString(ConfigurationManager.AppSettings["GoogleCallbackPath"])
             });
         }
     }
