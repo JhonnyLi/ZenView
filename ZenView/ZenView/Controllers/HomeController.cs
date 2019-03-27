@@ -11,8 +11,6 @@ namespace ZenView.Controllers
     {
         public ActionResult Index()
         {
-            ZendeskHelper zen = new ZendeskHelper();
-            zen.GetTicktets();
             return View();
         }
         public ActionResult About()
