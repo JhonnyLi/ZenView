@@ -30,7 +30,7 @@ namespace ZenView.Core.Models
         public Source source { get; set; }
     }
 
-    public class Result
+    public class Ticket
     {
         public string url { get; set; }
         public int id { get; set; }
@@ -48,7 +48,7 @@ namespace ZenView.Core.Models
         public object requester_id { get; set; }
         public object submitter_id { get; set; }
         public object assignee_id { get; set; }
-        public object organization_id { get; set; }
+        public long? organization_id { get; set; }
         public object group_id { get; set; }
         public List<object> collaborator_ids { get; set; }
         public List<object> follower_ids { get; set; }
@@ -67,13 +67,11 @@ namespace ZenView.Core.Models
         public object brand_id { get; set; }
         public bool allow_channelback { get; set; }
         public bool allow_attachments { get; set; }
-        public string result_type { get; set; }
     }
 
-    public class Ticket
+    public class Tickets
     {
-        public List<Result> results { get; set; }
-        public object facets { get; set; }
+        public List<Ticket> tickets { get; set; }
         public object next_page { get; set; }
         public object previous_page { get; set; }
         public int count { get; set; }

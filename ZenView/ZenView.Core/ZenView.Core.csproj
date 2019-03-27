@@ -118,7 +118,9 @@
     <Compile Include="Internals\ErrorHandling\UriException.cs" />
     <Compile Include="Interfaces\IHttpRequests.cs" />
     <Compile Include="Internals\Client.cs" />
+    <Compile Include="Models\ClientConfigModels\AccessTokenModel.cs" />
     <Compile Include="Models\ClientConfigModels\ClientConfigModel.cs" />
+    <Compile Include="Models\ClientConfigModels\OauthGetAccessTokenModel.cs" />
     <Compile Include="Models\Tickets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

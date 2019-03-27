@@ -8,12 +8,14 @@ using System.Web.Http.Cors;
 
 namespace ZenView.Core.Controllers
 {
+    [RoutePrefix("api")]
     public class ZendeskApiController : ApiController
     {
+        [Route("")]
         [EnableCors(origins: "*", headers: "*", methods: "POST")]
-        public void ZendeskWebHook(string test)
+        public HttpResponseMessage ZendeskWebHook(string test)
         {
-            throw new NotImplementedException();
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         public void GetZendeskTickets()

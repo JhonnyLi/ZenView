@@ -54,5 +54,7 @@ namespace ZenView.Core.Models.ClientConfigModels
         /// The protocol to use when making the request
         /// </summary>
         internal SecurityProtocolType ProtocolType { get; set; } = 0;
+
+        internal OauthGetAccessTokenModel AccessToken { get; set; }
     }
 }

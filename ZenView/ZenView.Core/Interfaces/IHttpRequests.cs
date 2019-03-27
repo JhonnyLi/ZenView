@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZenView.Core.Models;
+using ZenView.Core.Models.ClientConfigModels;
 
 namespace ZenView.Core.Interfaces
 {
     interface IHttpRequests
     {
-        string GetAllTickets();
+        Tickets GetAllTickets();
         void GetAllGroups();
         void GetAgentsFromGroup(string group);
     }
