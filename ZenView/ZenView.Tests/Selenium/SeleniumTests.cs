@@ -19,6 +19,7 @@ namespace ZenView.Tests.Selenium
             IWebDriver driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://zenview.azurewebsites.net/");
             driver.FindElement(By.Id("signalRbtn")).Click();
+            driver.Quit();
         }
 
     }
