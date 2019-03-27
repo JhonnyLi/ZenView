@@ -16,3 +16,4 @@ Client side updates are handled in React with Redux support.
 - [Zendesk](https://www.zendesk.com/)
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
+- [OAuth 2.0](https://oauth.net/2/)
