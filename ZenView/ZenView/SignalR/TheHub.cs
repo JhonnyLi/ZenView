@@ -12,7 +12,9 @@ namespace ZenView.Web.Classes.SignalR
         public void Connected(Guid userId, string user)
         {
             _users.Add(userId, user);
-            Clients.All.online("User connected at: " + DateTime.Now.TimeOfDay.ToString());
+            ZenView.Core.Helpers.ZendeskHelper helper = new Core.Helpers.ZendeskHelper();
+            var tickets = helper.GetTicktets();
+            Clients.All.online("User connected at: " + DateTime.Now.TimeOfDay.ToString(),tickets);
         }
 
         public void Send(string user, string message)

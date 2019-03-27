@@ -6,7 +6,8 @@ Main.SignalR = (function () {
     var chat = $("#signalRchat");
     var userId;
 
-    connection.client.online = function (date) {
+    connection.client.online = function (date, tickets) {
+        console.log(tickets);
         button.text("User connected: " + date);
     };
 
