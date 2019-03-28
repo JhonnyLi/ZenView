@@ -1,4 +1,8 @@
-﻿class AlertTicker extends React.Component {
+﻿'use strict'
+
+const { Provider, connect } = ReactRedux;
+
+class AlertTicker extends React.Component {
     render() {
         return (
             <div id="alert-ticker">
@@ -20,13 +24,15 @@ class MainContainer extends React.Component {
     render() {
         var rows = [];
         for (var i = 0; i < 1; i++) {
-         rows.push(<CommentBox key={i} />);
+            rows.push(<CommentBox key={i} />);
         }
         return (
-            <div>
-                <AlertTicker ticker={this.props.store} />
-                {rows}
-            </div>
+            <Provider store={Main.Redux.Store}>
+                <div>
+                    <AlertTicker ticker={this.props.store} />
+                    {rows}
+                </div>
+            </Provider>
         );
     }
 }
