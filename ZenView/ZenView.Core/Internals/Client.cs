@@ -128,6 +128,7 @@ namespace ZenView.Core.Internals
                 catch
                 {
                     //May not be neccessary
+                    throw;
                 }
 
             }
