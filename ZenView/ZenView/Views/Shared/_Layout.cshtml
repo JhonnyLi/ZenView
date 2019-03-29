@@ -41,13 +41,9 @@
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @if(ViewBag.Title == "ZenView")
-    {
-        Scripts.Render("~/bundles/react");
-    }
-    @*
-        <script src="~/Scripts/Vendor/SignalR/jquery.signalR-2.4.0.min.js"></script>
-        <script src="~/signalr/hubs"></script>*@
+    @Scripts.Render("~/bundles/react")
+    <script src="~/Scripts/Vendor/SignalR/jquery.signalR-2.4.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     @Scripts.Render("~/bundles/sitescripts")
 
     @RenderSection("scripts", required: false)

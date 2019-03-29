@@ -40,9 +40,9 @@ namespace ZenView
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/sitescripts").Include(
-                "~/Scripts/Main.js"
-                //"~/Scripts/redux.js",
-                //"~/Scripts/react.js"
+                "~/Scripts/Main.js",
+                "~/Scripts/redux.js",
+                "~/Scripts/react.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
