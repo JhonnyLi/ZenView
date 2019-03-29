@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using ZenView;
 
 namespace ZenView.Core.Controllers
 {
@@ -23,7 +22,6 @@ namespace ZenView.Core.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "POST")]
         public HttpResponseMessage StatusCakeWebHook(string test)
         {
-
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
