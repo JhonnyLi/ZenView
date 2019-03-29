@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ZenView.Core.Helpers;
 
-namespace ZenView.Controllers
+namespace ZenView.Web.Controllers
 {
     public class HomeController : Controller
     {

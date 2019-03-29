@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace ZenView
+namespace ZenView.Web
 {
     public class FilterConfig
     {

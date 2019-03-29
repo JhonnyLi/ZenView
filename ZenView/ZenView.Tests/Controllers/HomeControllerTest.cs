@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ZenView;
-using ZenView.Controllers;
+using ZenView.Web.Controllers;
 
 namespace ZenView.Tests.Controllers
 {

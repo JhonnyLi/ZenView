@@ -6,9 +6,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using ZenView.Models;
+using ZenView.Web.Models;
 
-namespace ZenView
+namespace ZenView.Web
 {
     public partial class Startup
     {

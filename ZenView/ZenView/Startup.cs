@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ZenView.Startup))]
-namespace ZenView
+[assembly: OwinStartupAttribute(typeof(ZenView.Web.Startup))]
+namespace ZenView.Web
 {
     public partial class Startup
     {

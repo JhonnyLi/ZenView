@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace ZenView.Models
+namespace ZenView.Web.Models
 {
     public class IndexViewModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ZenView
+namespace ZenView.Web
 {
     public class BundleConfig
     {

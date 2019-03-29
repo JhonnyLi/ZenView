@@ -1,8 +1,8 @@
 using React;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ZenView.ReactConfig), "Configure")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ZenView.Web.ReactConfig), "Configure")]
 
-namespace ZenView
+namespace ZenView.Web
 {
 	public static class ReactConfig
 	{

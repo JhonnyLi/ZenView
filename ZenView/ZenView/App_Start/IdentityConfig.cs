@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using ZenView.Models;
+using ZenView.Web.Models;
 
-namespace ZenView
+namespace ZenView.Web
 {
     public class EmailService : IIdentityMessageService
     {

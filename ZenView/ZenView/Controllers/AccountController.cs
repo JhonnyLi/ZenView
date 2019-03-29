@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using ZenView.Models;
+using ZenView.Web.Models;
 
-namespace ZenView.Controllers
+namespace ZenView.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
