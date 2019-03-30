@@ -106,8 +106,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZenView\ZenView.Web.csproj">
-      <Project>{30A68254-5A7D-4C70-9E8B-84014097462B}</Project>
+    <ProjectReference Include="..\ZenView.Web\ZenView.Web.csproj">
+      <Project>{30a68254-5a7d-4c70-9e8b-84014097462b}</Project>
       <Name>ZenView.Web</Name>
     </ProjectReference>
   </ItemGroup>

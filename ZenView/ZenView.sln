@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenView.Web", "ZenView\ZenView.Web.csproj", "{30A68254-5A7D-4C70-9E8B-84014097462B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenView.Web", "ZenView.Web\ZenView.Web.csproj", "{30A68254-5A7D-4C70-9E8B-84014097462B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZenView.Tests", "ZenView.Tests\ZenView.Tests.csproj", "{1FE043E9-6476-47E8-8B50-09538182F862}"
 EndProject
