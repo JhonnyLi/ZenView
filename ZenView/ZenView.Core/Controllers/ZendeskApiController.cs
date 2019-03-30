@@ -13,14 +13,21 @@ namespace ZenView.Core.Controllers
     {
         [Route("")]
         [EnableCors(origins: "*", headers: "*", methods: "POST")]
-        public HttpResponseMessage ZendeskWebHook(string test)
+        public HttpResponseMessage ZendeskWebHook([FromBody]string message)
         {
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Route("")]
         [EnableCors(origins: "*", headers: "*", methods: "POST")]
-        public HttpResponseMessage StatusCakeWebHook(string test)
+        public HttpResponseMessage StatusCakeWebHook([FromBody]string message)
+        {
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [Route("")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage StatusCakeWebHook()
         {
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
