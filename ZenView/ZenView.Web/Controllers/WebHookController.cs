@@ -30,17 +30,17 @@ namespace ZenView.Web.Controllers
         }
 
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage StatusGet(string message)
+        public HttpResponseMessage StatusGet(string Token, string Status, string StatusCode, string Url, string IP, string Name, string Tags, string CheckRate)
         {
+            _theHub.Clients.All.online(Name + ": " + Status + " [" + StatusCode + "] (" + Url + ")");
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [System.Web.Http.HttpPost]
-        public HttpResponseMessage StatusPost([FromBody]string message)
+        public HttpResponseMessage StatusPost([FromBody]string Token, string Status, string StatusCode, string Url, string IP, string Name, string Tags, string CheckRate)
         {
-            _theHub.Clients.All.online(message);
+            _theHub.Clients.All.online(Name + ": " + Status + " [" + StatusCode + "] (" + Url + ")");
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
-
     }
 }
