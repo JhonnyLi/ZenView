@@ -12,7 +12,6 @@ namespace ZenView.Tests.Selenium
         private IWebDriver driver;
         private string appURL;
 
-
         [TestMethod]
         public void SeleniumNavigateAbout()
         {
@@ -56,7 +55,8 @@ namespace ZenView.Tests.Selenium
         [TestInitialize()]
         public void Selenium()
         {
-            appURL = "https://zenview.azurewebsites.net/";
+            //appURL = "https://zenview.azurewebsites.net/";
+            appURL = "http://localhost:56871/";
 
             string browser = "Chrome";
             switch (browser)
