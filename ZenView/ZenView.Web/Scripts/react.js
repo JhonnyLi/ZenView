@@ -30,8 +30,7 @@ var AlertTicker = (function (_React$Component) {
                 React.createElement(
                     "span",
                     null,
-                    " 22:51 mto.se - https://www.mto.se/ Your site went down! ",
-                    this.props.ticker
+                    "Status ticker"
                 )
             );
         }

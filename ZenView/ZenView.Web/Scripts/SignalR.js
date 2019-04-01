@@ -4,11 +4,15 @@ var connection = $.connection.theHub;
 Main.SignalR = (function () {
     var button = $("#signalRbtn");
     var chat = $("#signalRchat");
+    
     var userId;
 
     connection.client.online = function (date, tickets) {
         console.log(tickets);
         button.text("User connected: " + date);
+        var ticker = $("#alert-ticker").children().first()[0];
+        console.log(ticker);
+        ticker.innerHTML = date;
     };
 
     connection.client.broadcast = function (user, message) {

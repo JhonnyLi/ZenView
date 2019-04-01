@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 using ZenView.Web.Classes.SignalR;
+using ZenView.Web.Models;
 
 namespace ZenView.Web.Controllers
 {
@@ -24,7 +25,7 @@ namespace ZenView.Web.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public HttpResponseMessage ZenPost([FromBody]string message)
+        public HttpResponseMessage ZenPost([FromBody]WebhookModel message)
         {
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
