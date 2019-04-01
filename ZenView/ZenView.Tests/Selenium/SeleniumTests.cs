@@ -40,7 +40,7 @@ namespace ZenView.Tests.Selenium
         public void SeleniumNavigateLogin()
         {
             driver.Navigate().GoToUrl(appURL);
-            driver.FindElement(By.LinkText("Log in")).Click();
+            driver.FindElement(By.Id("loginLink")).Click();
             Assert.AreEqual(driver.Title, "Log in - ZenView");
         }
 
@@ -55,8 +55,7 @@ namespace ZenView.Tests.Selenium
         [TestInitialize()]
         public void Selenium()
         {
-            //appURL = "https://zenview.azurewebsites.net/";
-            appURL = "http://localhost:56871/";
+            appURL = "https://zenview-staging.azurewebsites.net/";
 
             string browser = "Chrome";
             switch (browser)
