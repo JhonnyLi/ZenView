@@ -15,6 +15,11 @@ Main.SignalR = (function () {
         ticker.innerHTML = date;
     };
 
+    connection.client.tickets = function (ticketsString) {
+        var tickets = JSON.parse(ticketsString);
+        console.log(tickets);
+        button.text("Tickets received: " + tickets.message.ticket.title);
+    }
     connection.client.broadcast = function (user, message) {
         chat.text(chat.text() + user + ": " + message);
     };

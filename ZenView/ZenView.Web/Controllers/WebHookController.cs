@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-//using System.Web.Mvc;
 using ZenView.Web.Classes.SignalR;
 using ZenView.Web.Models;
 
@@ -17,16 +17,11 @@ namespace ZenView.Web.Controllers
             
         }
 
-        [HttpGet]
-        public HttpResponseMessage ZenGet(string message)
-        {
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
-        }
-
         [HttpPost]
         public HttpResponseMessage ZenPost([FromBody]WebhookModel message)
         {
+            var jsonContent = JsonConvert.SerializeObject(message);
+            _theHub.Clients.All.tickets(jsonContent);
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
