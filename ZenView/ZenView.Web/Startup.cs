@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Web.Http;
 
 [assembly: OwinStartupAttribute(typeof(ZenView.Web.Startup))]
 namespace ZenView.Web
@@ -10,6 +11,15 @@ namespace ZenView.Web
         {
             ConfigureAuth(app);
             app.MapSignalR();
+
+            HttpConfiguration config = new HttpConfiguration();
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            app.UseWebApi(config);
         }
     }
 }
