@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Script.Serialization;
 using ZenView.Core.Interfaces;
 using ZenView.Core.Internals;
@@ -13,16 +15,6 @@ namespace ZenView.Core.Controllers
         public HttpRequests()
         {
             _client = new Client();
-        }
-        public void GetAgentsFromGroup(string group)
-        {
-
-            throw new NotImplementedException();
-        }
-
-        public void GetAllGroups()
-        {
-            throw new NotImplementedException();
         }
 
         public Tickets GetAllTickets()
@@ -39,5 +31,17 @@ namespace ZenView.Core.Controllers
             return model;
         }
 
+        public List<User> GetAllUsers()
+        {
+            var config = CreateConfig("https://zenview.zendesk.com/api/v2/users.json");
+            var result = _client.GetRequestAsync(config, "");
+            var model = new JavaScriptSerializer().Deserialize<ZendeskRootObject>(result.Result);
+            return model.users;
+        }
+
+        public List<User> GetAllAgents()
+        {
+            return GetAllUsers().Where(x => x.role == "agent").ToList();
+        }
     }
 }

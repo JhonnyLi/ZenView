@@ -11,7 +11,6 @@ namespace ZenView.Core.Interfaces
     interface IHttpRequests
     {
         Tickets GetAllTickets();
-        void GetAllGroups();
-        void GetAgentsFromGroup(string group);
+        List<User> GetAllUsers();
     }
 }

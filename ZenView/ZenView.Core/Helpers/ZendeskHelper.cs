@@ -23,5 +23,11 @@ namespace ZenView.Core.Helpers
             var result = _request.GetAllTickets();
             return result;
         }
+
+        public List<User> GetAgents()
+        {
+            var result = _request.GetAllAgents();
+            return result;
+        }
     }
 }

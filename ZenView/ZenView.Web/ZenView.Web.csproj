@@ -228,6 +228,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalR\TheHub.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ZenViewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Css\bundle.css">
