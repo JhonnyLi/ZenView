@@ -12,11 +12,11 @@ namespace ZenView.Web.ViewModels
         public ZenViewViewModel()
         {
             ZenView.Core.Helpers.ZendeskHelper helper = new Core.Helpers.ZendeskHelper();
-            Tickets = helper.GetTicktets();
+            Tickets = helper.GetTicktets().tickets;
             Users = helper.GetAgents();
             
         }
-        public Tickets Tickets { get; set; }
+        public List<Ticket> Tickets { get; set; }
         public List<User> Users { get; set; }
     }
 }
