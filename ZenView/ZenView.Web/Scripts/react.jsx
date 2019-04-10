@@ -6,7 +6,7 @@ class AlertTicker extends React.Component {
     render() {
         return (
             <div id="alert-ticker">
-                <span>Status ticker</span>
+                <span>Status ticker {this.props.ticker}</span>
             </div>
         );
     }

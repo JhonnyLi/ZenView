@@ -30,7 +30,8 @@ var AlertTicker = (function (_React$Component) {
                 React.createElement(
                     "span",
                     null,
-                    "Status ticker"
+                    "Status ticker ",
+                    this.props.ticker
                 )
             );
         }

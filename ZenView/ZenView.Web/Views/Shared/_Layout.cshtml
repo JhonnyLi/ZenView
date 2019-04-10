@@ -24,6 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=zenview.azurewebsites.net/Account/ZendeskLoginCallback&client_id=zenview&scope=read" id="zendesk-login">Login with Zendesk</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

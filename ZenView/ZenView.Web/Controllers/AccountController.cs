@@ -271,7 +271,7 @@ namespace ZenView.Web.Controllers
             return View();
         }
 
-        //
+        
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -347,6 +347,7 @@ namespace ZenView.Web.Controllers
             }
         }
 
+
         //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
@@ -384,6 +385,15 @@ namespace ZenView.Web.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+
+        // GET: /Account/ZendeskLoginCallback
+        [AllowAnonymous]
+        public ActionResult ZendeskLoginCallback(string returnUrl)
+        {
+            
+            return RedirectToAction("About", "Home");
+        }
+
 
         //
         // POST: /Account/LogOff
