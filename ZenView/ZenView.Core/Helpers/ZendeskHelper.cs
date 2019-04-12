@@ -29,5 +29,10 @@ namespace ZenView.Core.Helpers
             var result = _request.GetAllAgents();
             return result;
         }
+
+        public void InitLogin(string code)
+        {
+            _request.InitializeLogin(code);
+        }
     }
 }

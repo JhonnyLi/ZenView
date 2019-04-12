@@ -2,12 +2,16 @@
     let init = function () {
         console.log("Main Initialized");
         $("#zendesk-login").click(function () {
-            $.get("https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=&client_id=zenview_agent&scope=read").done(function (response) {
+            //$.get("https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=&client_id=zenview_agent&scope=read").done(function (response) {
+            //    console.log("Response: ", response);
+            //});
+            debugger;
+            $.get("http://localhost:56871/Account/Test").done(function (response) {
                 console.log("Response: ", response);
             });
         });
     };
-    
+
     return {
         Init: init
     };

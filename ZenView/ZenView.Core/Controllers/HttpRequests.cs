@@ -43,5 +43,30 @@ namespace ZenView.Core.Controllers
         {
             return GetAllUsers().Where(x => x.role == "agent").ToList();
         }
+
+        public void InitializeLogin(string code)
+        {
+            //https://{subdomain}https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={your_redirect_url}&client_id={your_unique_identifier}&scope=read%20write
+            var config = CreateConfig("https://zenview.zendesk.com/oauth/tokens");
+            var result = _client.PostAuthorizeAsync<OauthGetAccessTokenModel>(config, CreateAccessToken(code));
+            var token = new JavaScriptSerializer().Deserialize<AccessTokenModel>(result.Result);
+            //var result = _client.PostAuthorizeAsync(config, $"grant_type=authorization_code&code={code}&client_id=zenview-dev&client_secret=10ed46af35e864e77e8e3ace0a02aee7e31677ffddccdc94f4a811abf47b8b28&redirect_uri=http://localhost:56871/Account/ZendeskLoginCallback&scope=read");
+            //?response_type=code&redirect_uri=zenview.azurewebsites.net/Account/ZendeskLoginCallback&client_id=zenview-dev&scope=read
+            //http://localhost:56871/Account/ZendeskLoginCallback
+        }
+
+        private OauthGetAccessTokenModel CreateAccessToken(string code)
+        {
+            var model = new OauthGetAccessTokenModel
+            {
+                grant_type = "authorization_code",
+                code=code,
+                client_id = "zenview-dev",
+                client_secret = "10ed46af35e864e77e8e3ace0a02aee7e31677ffddccdc94f4a811abf47b8b28",
+                scope = "read",
+            };
+
+            return model;
+        }
     }
 }

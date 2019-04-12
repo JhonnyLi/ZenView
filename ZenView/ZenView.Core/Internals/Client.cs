@@ -19,7 +19,9 @@ namespace ZenView.Core.Internals
         private readonly AccessTokenModel _accessToken;
         public Client()
         {
-            _accessToken = AuthorizeClient();
+            
+            //_accessToken = AuthorizeClient();
+            //_accessToken = AuthorizeUser();
         }
 
         internal Task<string> PostRequestAsync<T>(ClientConfig config, T model)
@@ -140,6 +142,13 @@ namespace ZenView.Core.Internals
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return byteContent;
+        }
+
+        private AccessTokenModel AuthorizeUser()
+        {
+            var config = HttpRequests.CreateConfig("https://zenview.zendesk.com/oauth/authorizations/new");
+            var result = GetRequestAsync(config, "response_type=code&redirect_uri=http://localhost:56871/Account/ZendeskLoginCallback&client_id=zenview-dev&scope=read");
+            return new JavaScriptSerializer().Deserialize<AccessTokenModel>(result.Result);
         }
 
         private AccessTokenModel AuthorizeClient()

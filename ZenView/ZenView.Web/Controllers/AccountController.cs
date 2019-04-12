@@ -8,7 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using ZenView.Core.Helpers;
 using ZenView.Web.Models;
+using ZenView.Core.Controllers;
+using System.Web.Security;
 
 namespace ZenView.Web.Controllers
 {
@@ -386,11 +389,30 @@ namespace ZenView.Web.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        public string Test()
+        {
+            ZendeskHelper help = new ZendeskHelper();
+            //help.InitLogin();
+
+            return "Status";
+        }
+
         // GET: /Account/ZendeskLoginCallback
         [AllowAnonymous]
-        public ActionResult ZendeskLoginCallback(string returnUrl)
+        public async Task<ActionResult> ZendeskLoginCallback(string code)
         {
-            
+            ZendeskHelper help = new ZendeskHelper();
+            help.InitLogin(code);
+            //var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            //if (loginInfo == null)
+            //{
+            //    return RedirectToAction("Login");
+            //}
+
+            //// Sign in the user with this external login provider if the user already has a login
+            //var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             return RedirectToAction("About", "Home");
         }
 
