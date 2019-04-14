@@ -280,6 +280,7 @@
     <Content Include="Css\bundle.scss" />
     <Content Include="Css\Settings\colors.scss" />
     <Content Include="Css\Tools\mixins.scss" />
+    <Content Include="Css\Pages\Login.scss" />
     <None Include="Scripts\Vendor\jQuery\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Vendor\jQuery\jquery-3.3.1.js" />
     <Content Include="Scripts\Vendor\jQuery\jquery-3.3.1.min.js" />

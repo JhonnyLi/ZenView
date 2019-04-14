@@ -27,7 +27,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                   <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=@zendeskRedirectUri&client_id=@ZendeskClientId&scope=read">Login with Zendesk</a></li>
+                    <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=@zendeskRedirectUri&client_id=@ZendeskClientId&scope=read">Login with Zendesk</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -45,11 +45,14 @@
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/react")
-    <script src="~/Scripts/Vendor/SignalR/jquery.signalR-2.4.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    @Scripts.Render("~/bundles/sitescripts")
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Scripts.Render("~/bundles/react")
+        <script src="~/Scripts/Vendor/SignalR/jquery.signalR-2.4.0.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+        @Scripts.Render("~/bundles/sitescripts")
 
+    }
     @RenderSection("scripts", required: false)
 </body>
 </html>

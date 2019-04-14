@@ -6550,3 +6550,7 @@ h1 {
     font-size: 1.5em;
     font-weight: 900;
     -webkit-animation: scroll 15s infinite linear; }
+
+#socialLoginList p button {
+  display: block;
+  margin: 0 auto; }
