@@ -10,7 +10,9 @@ namespace ZenView.Core.Interfaces
 {
     interface IHttpRequests
     {
-        Tickets GetAllTickets();
-        List<User> GetAllUsers();
+        Tickets GetAllTickets(string token);
+        List<User> GetAllUsers(string token);
+        AccessTokenModel GetAccessToken(string code);
+
     }
 }

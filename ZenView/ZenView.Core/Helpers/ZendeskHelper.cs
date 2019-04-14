@@ -1,38 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
-using ZenView.Core.Controllers;
+using ZenView.Core.Interfaces;
 using ZenView.Core.Internals;
 using ZenView.Core.Models;
 using ZenView.Core.Models.ClientConfigModels;
+using ZenView.Core.Internals;
+using System.Web.Script.Serialization;
 
 namespace ZenView.Core.Helpers
 {
-    public class ZendeskHelper
+    public class ZendeskHelper : IHttpRequests
     {
-        private HttpRequests _request;
+        private Client _client;
         public ZendeskHelper()
         {
-            _request = new HttpRequests();
+            _client = new Client();
 
         }
 
-        public Tickets GetTicktets()
+        public Tickets GetAllTickets(string token)
         {
-            var result = _request.GetAllTickets();
-            return result;
+            //https://{subdomain}.zendesk.com/api/v2/tickets.json
+            //"/api/v2/tickets/recent.json"
+            var config = Client.CreateConfig("https://zenview.zendesk.com/api/v2/tickets.json");
+            var result = _client.GetRequestAsync(config, "", Client.GetAccessToken(token));
+            var tickets = new JavaScriptSerializer().Deserialize<Tickets>(result.Result);  //Maybe add where to remove all closed tickets.
+            return tickets;
+
         }
 
-        public List<User> GetAgents()
+        public List<User> GetAllUsers(string token)
         {
-            var result = _request.GetAllAgents();
-            return result;
+            var config = Client.CreateConfig("https://zenview.zendesk.com/api/v2/users.json");
+            var result = _client.GetRequestAsync(config, "",null);
+            var model = new JavaScriptSerializer().Deserialize<ZendeskRootObject>(result.Result);
+            return model.users.Where(x => x.role == "agent").ToList();
         }
 
-        public void InitLogin(string code)
+        public AccessTokenModel GetAccessToken(string code)
         {
-            _request.InitializeLogin(code);
+            var config = Client.CreateConfig("https://zenview.zendesk.com/oauth/tokens");
+            var result = _client.PostAuthorizeAsync<OauthGetAccessTokenModel>(config, Client.CreateAuthToken(code));
+            var token = new JavaScriptSerializer().Deserialize<AccessTokenModel>(result.Result);
+            return token;
         }
     }
 }

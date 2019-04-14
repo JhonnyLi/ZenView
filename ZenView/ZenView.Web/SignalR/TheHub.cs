@@ -12,11 +12,12 @@ namespace ZenView.Web.Classes.SignalR
         private static Dictionary<Guid, string> _users = new Dictionary<Guid, string>();
         public void Connected(Guid userId, string user)
         {
-            _users.Add(userId, user);
-
-            var vm = new ZenViewViewModel();
-
-            Clients.All.online("User connected at: " + DateTime.Now.TimeOfDay.ToString(),vm);
+            Clients.All.online("User connected at: " + DateTime.Now.TimeOfDay.ToString());
+        }
+        public void GetTickets(string token)
+        {
+            var vm = new ZenViewViewModel(token);
+            Clients.Caller.receiveTickets(vm.Tickets);
         }
 
         public void Send(string user, string message)

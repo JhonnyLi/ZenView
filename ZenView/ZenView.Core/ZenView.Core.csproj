@@ -102,7 +102,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HttpRequests.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\ZendeskHelper.cs" />
     <Compile Include="Internals\ErrorHandling\ExceptionHelpers.cs" />

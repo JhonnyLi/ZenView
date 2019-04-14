@@ -10,8 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ZenView.Core.Helpers;
 using ZenView.Web.Models;
-using ZenView.Core.Controllers;
 using System.Web.Security;
+using System.Configuration;
 
 namespace ZenView.Web.Controllers
 {
@@ -336,7 +336,10 @@ namespace ZenView.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var zendeskRedirectUri = ConfigurationManager.AppSettings["ZendeskRedirectUri"];
+                    var ZendeskClientId = ConfigurationManager.AppSettings["ZendeskClientId"];
+                    return Redirect($"https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={zendeskRedirectUri}Uri&client_id={ZendeskClientId}&scope=read");
+                    //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -403,8 +406,14 @@ namespace ZenView.Web.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ZendeskLoginCallback(string code)
         {
-            ZendeskHelper help = new ZendeskHelper();
-            help.InitLogin(code);
+            ZendeskHelper helper = new ZendeskHelper();
+            var result = helper.GetAccessToken(code);
+            Request.Cookies.Add(new HttpCookie("zendesk", result.access_token));
+            var user = helper.GetAllUsers(result.access_token);
+            var tickets = helper.GetAllTickets(result.access_token);
+            //https://{subdomain}.zendesk.com/api/v2/tickets.json
+            var loginInfo = AuthenticationManager.User;
+            var dummy = "";
             //var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             //if (loginInfo == null)
             //{
@@ -413,7 +422,7 @@ namespace ZenView.Web.Controllers
 
             //// Sign in the user with this external login provider if the user already has a login
             //var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
-            return RedirectToAction("About", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
 

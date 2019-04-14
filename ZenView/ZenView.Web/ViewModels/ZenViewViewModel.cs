@@ -9,11 +9,11 @@ namespace ZenView.Web.ViewModels
     [Serializable]
     public class ZenViewViewModel
     {
-        public ZenViewViewModel()
+        public ZenViewViewModel(string token)
         {
             ZenView.Core.Helpers.ZendeskHelper helper = new Core.Helpers.ZendeskHelper();
-            Tickets = helper.GetTicktets().tickets;
-            Users = helper.GetAgents();
+            Tickets = helper.GetAllTickets(token).tickets;
+            //Users = helper.GetAgents();
             
         }
         public List<Ticket> Tickets { get; set; }

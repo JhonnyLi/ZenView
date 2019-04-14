@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Configuration;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,6 +7,11 @@
     <title>@ViewBag.Title - ZenView</title>
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
+    @{
+        var zendeskRedirectUri = ConfigurationManager.AppSettings["ZendeskRedirectUri"];
+        var ZendeskClientId = ConfigurationManager.AppSettings["ZendeskClientId"];
+
+    }
 
 </head>
 <body>
@@ -24,8 +30,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=http://localhost:56871/Account/ZendeskLoginCallback&client_id=zenview-dev&scope=read" id="zendesk-login2">Login with Zendesk</a></li>
-                    @*<li><button id="zendesk-login">Login with Zendesk</button></li>*@
+                    <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=@zendeskRedirectUri&client_id=zenview-dev&scope=read">Login with Zendesk</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
