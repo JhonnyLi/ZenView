@@ -13,7 +13,7 @@ namespace ZenView.Web.ViewModels
         {
             ZenView.Core.Helpers.ZendeskHelper helper = new Core.Helpers.ZendeskHelper();
             Tickets = helper.GetAllTickets(token).tickets;
-            //Users = helper.GetAgents();
+            Users = helper.GetAllUsers(token);
             
         }
         public List<Ticket> Tickets { get; set; }

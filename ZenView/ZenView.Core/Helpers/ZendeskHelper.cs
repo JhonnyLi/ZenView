@@ -7,7 +7,6 @@ using ZenView.Core.Interfaces;
 using ZenView.Core.Internals;
 using ZenView.Core.Models;
 using ZenView.Core.Models.ClientConfigModels;
-using ZenView.Core.Internals;
 using System.Web.Script.Serialization;
 
 namespace ZenView.Core.Helpers
@@ -23,8 +22,6 @@ namespace ZenView.Core.Helpers
 
         public Tickets GetAllTickets(string token)
         {
-            //https://{subdomain}.zendesk.com/api/v2/tickets.json
-            //"/api/v2/tickets/recent.json"
             var config = Client.CreateConfig("https://zenview.zendesk.com/api/v2/tickets.json");
             var result = _client.GetRequestAsync(config, "", Client.GetAccessToken(token));
             var tickets = new JavaScriptSerializer().Deserialize<Tickets>(result.Result);  //Maybe add where to remove all closed tickets.
@@ -35,7 +32,7 @@ namespace ZenView.Core.Helpers
         public List<User> GetAllUsers(string token)
         {
             var config = Client.CreateConfig("https://zenview.zendesk.com/api/v2/users.json");
-            var result = _client.GetRequestAsync(config, "",null);
+            var result = _client.GetRequestAsync(config, "", Client.GetAccessToken(token));
             var model = new JavaScriptSerializer().Deserialize<ZendeskRootObject>(result.Result);
             return model.users.Where(x => x.role == "agent").ToList();
         }

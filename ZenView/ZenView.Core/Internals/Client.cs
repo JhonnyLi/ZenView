@@ -193,7 +193,7 @@ namespace ZenView.Core.Internals
         {
             var model = new AccessTokenModel();
             model.access_token = token;
-            model.token_type = "Bearer";
+            model.token_type = "bearer";
             model.scope = "read";
 
             return model;

@@ -23,14 +23,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ZenView - Development stage -", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=@zendeskRedirectUri&client_id=zenview-dev&scope=read">Login with Zendesk</a></li>
+                   <li><a href="https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri=@zendeskRedirectUri&client_id=@ZendeskClientId&scope=read">Login with Zendesk</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
