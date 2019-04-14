@@ -15,13 +15,7 @@ namespace ZenView.Core.Internals
 {
     internal class Client
     {
-        private readonly AccessTokenModel _accessToken;
-        public Client()
-        {
-            
-        }
-
-        internal Task<string> PostRequestAsync<T>(ClientConfig config, T model)
+        internal Task<string> PostRequestAsync<T>(ClientConfig config, T model, AccessTokenModel token)
         {
             Task<string> result = null;
             using (HttpClient client = new HttpClient())
@@ -35,7 +29,7 @@ namespace ZenView.Core.Internals
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     AddCustomHeaders(client, config.CustomHeaders);
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_accessToken.token_type, _accessToken.access_token);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token.token_type, token.access_token);
                     var byteContent = CreateBinaryContent(jsonContent);
 
                     Task<HttpResponseMessage> response = client.PostAsync(config._targetUri, byteContent);
