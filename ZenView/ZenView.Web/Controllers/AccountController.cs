@@ -200,7 +200,7 @@ namespace ZenView.Web.Controllers
                 case SignInStatus.Success:
                     var zendeskRedirectUri = ConfigurationManager.AppSettings["ZendeskRedirectUri"];
                     var ZendeskClientId = ConfigurationManager.AppSettings["ZendeskClientId"];
-                    return Redirect($"https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={zendeskRedirectUri}Uri&client_id={ZendeskClientId}&scope=read");
+                    return Redirect("https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={zendeskRedirectUri}&client_id={ZendeskClientId}&scope=read");
                     //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
