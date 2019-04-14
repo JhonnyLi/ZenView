@@ -101,7 +101,7 @@ namespace ZenView.Core.Internals
                 }
                 catch (HttpRequestException e)
                 {
-                    throw e;
+                    throw new HttpRequestException($"Result-string: {result} " ,e);
                 }
             }
             return result;
@@ -193,7 +193,7 @@ namespace ZenView.Core.Internals
         {
             var model = new AccessTokenModel();
             model.access_token = token;
-            model.token_type = "bearer";
+            model.token_type = "Bearer";
             model.scope = "read";
 
             return model;
