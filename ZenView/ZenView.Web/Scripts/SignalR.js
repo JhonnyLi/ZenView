@@ -14,11 +14,9 @@ Main.SignalR = (function () {
         console.log(ticker);
         ticker.innerHTML = date;
     };
-
-    connection.client.tickets = function (ticketsString) {
-        var tickets = JSON.parse(ticketsString);
-        console.log(tickets);
-        button.text("Tickets received: " + tickets.message.ticket.title);
+    //zenUser
+    connection.client.receiveTickets = function (tickets) {
+        Main.Redux.store.dispatch({ type: 'INCREMENT' });
     }
     connection.client.broadcast = function (user, message) {
         chat.text(chat.text() + user + ": " + message);
@@ -31,9 +29,12 @@ Main.SignalR = (function () {
     let connectionSuccessful = function (user) {
         userId = user.id;
         console.log(user.id);
-        connection.server.connected(user.id, "Torgny");
-        connection.server.send("Torgny", "Här e ja");
-        button.addClass("btn btn-success");
+        var cookies = document.cookie.split(';').filter(name => name.startsWith("zenUser"))[0];
+        var cookie = cookies.substring(cookies.indexOf('=') + 1);
+        connection.server.getTickets(cookie);
+        //connection.server.connected(user.id, "Torgny");
+        //connection.server.send("Torgny", "Här e ja");
+        
     };
 
     let connectionFailed = function () {
@@ -48,6 +49,7 @@ Main.SignalR = (function () {
         $.connection.hub.start()
             .done(connectionSuccessful)
             .fail(connectionFailed);
+        
     };
     return {
         Init: init,

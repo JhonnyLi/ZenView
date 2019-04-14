@@ -270,6 +270,7 @@ namespace ZenView.Web.Controllers
         {
             ZendeskHelper helper = new ZendeskHelper();
             var result = helper.GetAccessToken(code);
+            Response.Cookies.Add(new HttpCookie("zenUser", result.access_token));
             var user = helper.GetAllUsers(result.access_token);
             var tickets = helper.GetAllTickets(result.access_token);
             return RedirectToAction("Index", "Home");
