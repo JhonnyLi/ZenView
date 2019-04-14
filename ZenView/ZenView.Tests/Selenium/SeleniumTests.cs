@@ -12,13 +12,13 @@ namespace ZenView.Tests.Selenium
         private IWebDriver driver;
         private string appURL;
 
-        [TestMethod]
-        public void SeleniumExecuteMainInit()
-        {
-            driver.Navigate().GoToUrl(appURL);
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("return console.log(Main.Init())");
-        }
+        //[TestMethod]
+        //public void SeleniumExecuteMainInit()
+        //{
+        //    driver.Navigate().GoToUrl(appURL);
+        //    IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+        //    js.ExecuteScript("return console.log(Main.Init())");
+        //}
         
         [TestInitialize()]
         public void Selenium()
