@@ -13,38 +13,6 @@ namespace ZenView.Tests.Selenium
         private string appURL;
 
         [TestMethod]
-        public void SeleniumNavigateAbout()
-        {
-            driver.Navigate().GoToUrl(appURL);
-            driver.FindElement(By.LinkText("About")).Click();
-            Assert.AreEqual(driver.Title, "About - ZenView");
-        }
-        
-        [TestMethod]
-        public void SeleniumNavigateContact()
-        {
-            driver.Navigate().GoToUrl(appURL);
-            driver.FindElement(By.LinkText("Contact")).Click();
-            Assert.AreEqual(driver.Title, "Contact - ZenView");
-        }
-
-        [TestMethod]
-        public void SeleniumNavigateRegister()
-        {
-            driver.Navigate().GoToUrl(appURL);
-            driver.FindElement(By.LinkText("Register")).Click();
-            Assert.AreEqual(driver.Title, "Register - ZenView");
-        }
-
-        [TestMethod]
-        public void SeleniumNavigateLogin()
-        {
-            driver.Navigate().GoToUrl(appURL);
-            driver.FindElement(By.Id("loginLink")).Click();
-            Assert.AreEqual(driver.Title, "Log in - ZenView");
-        }
-
-        [TestMethod]
         public void SeleniumExecuteMainInit()
         {
             driver.Navigate().GoToUrl(appURL);
