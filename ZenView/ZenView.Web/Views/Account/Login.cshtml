@@ -1,7 +1,7 @@
 ﻿@using ZenView.Web.Models
 @model LoginViewModel
 @{ 
-    var loginFailed = ViewData["zendesk"];
+    string loginFailed = ViewData["zendesk"]?.ToString() ?? string.Empty;
 }
 <div class="row">
     <div class="col-md-12">
