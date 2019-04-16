@@ -20,6 +20,11 @@ namespace ZenView.Web.Classes.SignalR
             Clients.Caller.receiveTickets(vm.Tickets);
         }
 
+        public void GetWebHookTicket(string ticket)
+        {
+            Clients.All.receiveWebHookTicket(ticket);
+        }
+
         public void Send(string user, string message)
         {
             Clients.All.broadcast(user, message);
@@ -31,3 +36,12 @@ namespace ZenView.Web.Classes.SignalR
         }
     }
 }
+
+/*
+ Client-side target functions
+ ******************************
+ online - Needs better name
+ receiveTickets - May need a better name
+ receiveWebHookTicket - Needs a better name
+ statusUpdate - May be good as it is...
+     */
