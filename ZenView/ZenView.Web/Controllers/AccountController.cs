@@ -1,17 +1,13 @@
-﻿using System;
-using System.Globalization;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Configuration;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using ZenView.Core.Helpers;
 using ZenView.Web.Models;
-using System.Web.Security;
-using System.Configuration;
 
 namespace ZenView.Web.Controllers
 {
@@ -25,7 +21,7 @@ namespace ZenView.Web.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -37,9 +33,9 @@ namespace ZenView.Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -123,7 +119,7 @@ namespace ZenView.Web.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -201,7 +197,7 @@ namespace ZenView.Web.Controllers
                     var zendeskRedirectUri = ConfigurationManager.AppSettings["ZendeskRedirectUri"];
                     var ZendeskClientId = ConfigurationManager.AppSettings["ZendeskClientId"];
                     return Redirect($"https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={zendeskRedirectUri}&client_id={ZendeskClientId}&scope=read");
-                    //return RedirectToLocal(returnUrl);
+                //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -268,12 +264,18 @@ namespace ZenView.Web.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ZendeskLoginCallback(string code)
         {
-            ZendeskHelper helper = new ZendeskHelper();
-            var result = helper.GetAccessToken(code);
-            Response.Cookies.Add(new HttpCookie("zenUser", result.access_token));
-            var user = helper.GetAllUsers(result.access_token);
-            var tickets = helper.GetAllTickets(result.access_token);
-            return RedirectToAction("Index", "Home");
+            if (!string.IsNullOrEmpty(code))
+            {
+                ZendeskHelper helper = new ZendeskHelper();
+                var result = helper.GetAccessToken(code);
+                Response.Cookies.Add(new HttpCookie("zenUser", result.access_token));
+                var user = helper.GetAllUsers(result.access_token);
+                var tickets = helper.GetAllTickets(result.access_token);
+                return RedirectToAction("Index", "Home");
+            }
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            ViewData["Zendesk"] = "Zendesk login failed";
+            return RedirectToAction("Login", "Account");
         }
 
 
