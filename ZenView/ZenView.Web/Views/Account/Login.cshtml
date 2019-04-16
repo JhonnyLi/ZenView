@@ -1,9 +1,14 @@
 ﻿@using ZenView.Web.Models
 @model LoginViewModel
-
+@{ 
+    var loginFailed = ViewData["zendesk"];
+}
 <div class="row">
     <div class="col-md-12">
         <section id="socialLoginForm">
+            @if (!string.IsNullOrEmpty(loginFailed)) {
+                <h3>@loginFailed</h3>
+            }
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>

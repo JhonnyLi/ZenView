@@ -1,13 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using ZenView.Core.Helpers;
 using ZenView.Web.Models;
 using System.Web.Security;
@@ -207,7 +206,7 @@ namespace ZenView.Web.Controllers
                     var ZendeskClientId = ConfigurationManager.AppSettings["ZendeskClientId"];
                     Response.Cookies.Add(new HttpCookie("ZenViewG", loginInfo.Email));
                     return Redirect($"https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={zendeskRedirectUri}&client_id={ZendeskClientId}&scope=read");
-                //return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -279,13 +278,16 @@ namespace ZenView.Web.Controllers
             {
                 ZendeskHelper helper = new ZendeskHelper();
                 var result = helper.GetAccessToken(code);
-                Response.Cookies.Add(new HttpCookie("ZenViewZ", result.access_token));
-                var users = helper.GetAllUsers(result.access_token);
+                Response.Cookies.Add(new HttpCookie("zenUser", result.access_token));
+                var user = helper.GetAllUsers(result.access_token);
                 var tickets = helper.GetAllTickets(result.access_token);
                 var userString = JsonConvert.SerializeObject(users);
                 var tickString = JsonConvert.SerializeObject(tickets);
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            ViewData["Zendesk"] = "Zendesk login failed";
+            return RedirectToAction("Login", "Account");
         }
 
 
