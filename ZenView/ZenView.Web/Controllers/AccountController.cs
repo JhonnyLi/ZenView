@@ -3,16 +3,14 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Configuration;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ZenView.Core.Helpers;
 using ZenView.Web.Models;
-using System.Web.Security;
-using System.Configuration;
-using Newtonsoft.Json;
 using ZenView.Web.Classes.SignalR;
+using System.Net.Http;
+using System;
 
 namespace ZenView.Web.Controllers
 {
@@ -25,6 +23,7 @@ namespace ZenView.Web.Controllers
 
         public AccountController()
         {
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -206,7 +205,7 @@ namespace ZenView.Web.Controllers
                     var ZendeskClientId = ConfigurationManager.AppSettings["ZendeskClientId"];
                     Response.Cookies.Add(new HttpCookie("ZenViewG", loginInfo.Email));
                     return Redirect($"https://zenview.zendesk.com/oauth/authorizations/new?response_type=code&redirect_uri={zendeskRedirectUri}&client_id={ZendeskClientId}&scope=read");
-                    //return RedirectToLocal(returnUrl);
+                //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -278,18 +277,40 @@ namespace ZenView.Web.Controllers
             {
                 ZendeskHelper helper = new ZendeskHelper();
                 var result = helper.GetAccessToken(code);
-                Response.Cookies.Add(new HttpCookie("zenUser", result.access_token));
-                var user = helper.GetAllUsers(result.access_token);
-                var tickets = helper.GetAllTickets(result.access_token);
-                var userString = JsonConvert.SerializeObject(users);
-                var tickString = JsonConvert.SerializeObject(tickets);
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                if (!TheHub._usersThatLoggedOn.Any(u => u.Key.Equals(user.UserName, StringComparison.InvariantCultureIgnoreCase)))
+                {
+                    TheHub._usersThatLoggedOn.Add(user.UserName, result.access_token);
+                }
+                else
+                {
+                    TheHub._usersThatLoggedOn[user.UserName] = result.access_token;
+                }
                 return RedirectToAction("Index", "Home");
+                //var users = helper.GetAllUsers(result.access_token);
+                //var tickets = helper.GetAllTickets(result.access_token);
+                //var userString = JsonConvert.SerializeObject(users);
+                //var tickString = JsonConvert.SerializeObject(tickets);
             }
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             ViewData["Zendesk"] = "Zendesk login failed";
             return RedirectToAction("Login", "Account");
         }
+        //[Authorize]
+        //public async Task<ActionResult> ZendeskLoginCallback(string error, string error_description)
+        //{
+        //    //ZendeskHelper helper = new ZendeskHelper();
+        //    //HttpClient client = new HttpClient();
+        //    //var result = await client.GetAsync(new Uri("https://zenview.zendesk.com/api/v2/users/me/session.json"));
+        //    //while(result.)
+        //    //string answer = result.Result.Content.ReadAsStringAsync().;
+        //    //var x = answer.Result;
 
+        //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        //    ViewData["Zendesk"] = "Zendesk login failed";
+        //    return RedirectToAction("Login", "Account");
+        //}
+        //{redirect_url}?error=access_denied&error_description=The+end-user+or+authorization+server+denied+the+request
 
         //
         // POST: /Account/LogOff

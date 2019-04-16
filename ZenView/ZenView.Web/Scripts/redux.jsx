@@ -1,18 +1,42 @@
 ﻿Main.Redux = (() => {
-    let reducer = (state = 0, action) => {
+    let ticketReducer = (state = [], action) => {
+        console.log("Ticket reducer");
+        console.log(action);
         if (action === undefined)
             return state;
-        console.log("Reducers reduce");
         switch (action.type) {
-            case 'INCREMENT':
-                return state + 1
+            case 'INIT_TICKETS':
+                return Object.assign({}, action.state);
             case 'DECREMENT':
                 return state - 1
             default:
                 return state
         }
     };
-    var store = window.Redux.createStore(reducer);
+    let userReducer = (state = [], action) => {
+        console.log("User reducer");
+        if (action === undefined)
+            return state;
+        switch (action.type) {
+            case 'INIT_USERS':
+                return action.state;
+            default:
+                return state
+        }
+    };
+    let settingReducer = (state = {}, action) => {
+        console.log("Setting reducer");
+        if (action === undefined)
+            return state;
+        switch (action.type) {
+            case 'SHOW_COMPONENT':
+                return [...state, { "show_component" : true }]
+            default:
+                return state
+        }
+    };
+    var rootReducer = Redux.combineReducers({ tickets: ticketReducer, users: userReducer, settings: settingReducer });
+    var store = window.Redux.createStore(rootReducer);
     var increment = () => { store.dispatch({ type: 'INCREMENT' }); };
     var decrement = () => { store.dispatch({ type: 'DECREMENT' }); };
 
@@ -25,7 +49,7 @@
         Store: store,
         Increment: increment,
         Decrement: decrement
-    }
+    } 
 })();
 
 $(function () {

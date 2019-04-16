@@ -9,8 +9,8 @@ namespace ZenView.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/Vendor/jQuery/jquery-{version}.js"));
-
+                        "~/Scripts/Vendor/jQuery/jquery-{version}.js",
+                        "~/Scripts/Vendor/jQuery/js.cookie.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/Vendor/jQuery/jquery.validate*"));
 
@@ -42,8 +42,7 @@ namespace ZenView.Web
             bundles.Add(new ScriptBundle("~/bundles/sitescripts").Include(
                 "~/Scripts/Main.js",
                 "~/Scripts/redux.js",
-                "~/Scripts/react.js"
-                ));
+                "~/Scripts/react.js"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Css/bundle.css"));

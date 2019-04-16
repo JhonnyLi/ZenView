@@ -8,33 +8,23 @@ Main.SignalR = (function () {
     var userId;
 
     connection.client.online = function (date, tickets) {
-        console.log(tickets);
         button.text("User connected: " + date);
         var ticker = $("#alert-ticker").children().first()[0];
-        console.log(ticker);
-        ticker.innerHTML = date;
     };
     //zenUser
-    connection.client.receiveTickets = function (tickets) {
-        Main.Redux.store.dispatch({ type: 'INCREMENT' });
-    }
-    connection.client.broadcast = function (user, message) {
-        chat.text(chat.text() + user + ": " + message);
-    };
-
-    connection.client.message = function (user, message) {
-        chat.text(user + ": " + message);
+    //Clients.Caller.receiveState(vm.Tickets, vm.Users);
+    connection.client.receiveState = function (tickets, users) {
+        var tick = JSON.stringify(tickets);
+        var userr = JSON.stringify(users);
+        Main.Redux.Store.dispatch({ type: 'INIT_TICKETS',state: tickets }); 
+        Main.Redux.Store.dispatch({ type: 'INIT_USERS', state: users });
+        console.log(tick);
+        console.log(userr);
     };
 
     let connectionSuccessful = function (user) {
-        userId = user.id;
-        console.log(user.id);
-        var cookies = document.cookie.split(';').filter(name => name.startsWith("zenUser"))[0];
-        var cookie = cookies.substring(cookies.indexOf('=') + 1);
-        connection.server.getTickets(cookie);
-        //connection.server.connected(user.id, "Torgny");
-        //connection.server.send("Torgny", "Här e ja");
-        
+        var cookie = Cookies.get("ZenViewG");
+        connection.server.connected(user.id, cookie);
     };
 
     let connectionFailed = function () {

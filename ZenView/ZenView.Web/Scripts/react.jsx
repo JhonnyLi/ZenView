@@ -22,22 +22,20 @@ class CommentBox extends React.Component {
 
 class MainContainer extends React.Component {
     render() {
-        var rows = [];
-        for (var i = 0; i < 1; i++) {
+        var rows = Main.Redux.Store.getStore().tickets;
+        for (var i = 0; i < rows.length, i++) {
             rows.push(<CommentBox key={i} />);
         }
         return (
-            <Provider store={Main.Redux.Store}>
                 <div>
                     <AlertTicker ticker={this.props.store} />
                     {rows}
                 </div>
-            </Provider>
         );
     }
 }
 
 function render() {
-    ReactDOM.render(<MainContainer store={Main.Redux.Store.getState()} />, document.getElementById('content'));
+    ReactDOM.render(<Provider store={Main.Redux.Store}/>, document.getElementById('content'));
 }
 setInterval(render, 1000);
