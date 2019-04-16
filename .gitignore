@@ -265,3 +265,5 @@ __pycache__/
 /ZenView/ZenView.Web/Css/bundle.min.css
 /ZenView/Secrets/AppSecrets.config
 /ZenView/ZenView.Web/Web.Debug.config
+/ZenView/ZenView.Web/Scripts/redux.js
+/ZenView/ZenView.Web/Scripts/redux.min.js
