@@ -23,7 +23,7 @@ class CommentBox extends React.Component {
 class MainContainer extends React.Component {
     render() {
         var rows = Main.Redux.Store.getStore().tickets;
-        for (var i = 0; i < rows.length, i++) {
+        for (var i = 0; i < rows.length; i++) {
             rows.push(<CommentBox key={i} />);
         }
         return (
